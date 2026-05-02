@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="4dp"
+    android:padding="8dp"
+    android:background="#F5F5F5">
+
+    <!-- 颜色标识 -->
+    <View
+        android:id="@+id/color_indicator"
+        android:layout_width="8dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:background="#FF4081" />
+
+    <!-- 话术内容 -->
+    <TextView
+        android:id="@+id/phrase_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="话术内容示例"
+        android:textColor="#333333" />
+
+    <!-- 快捷键 -->
+    <TextView
+        android:id="@+id/shortcut_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Ctrl+1"
+        android:textSize="12sp"
+        android:textColor="#666666" />
+
+</LinearLayout>

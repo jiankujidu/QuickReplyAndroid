@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/floating_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <!-- 悬浮图标 -->
+    <ImageView
+        android:id="@+id/floating_icon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="8dp"
+        android:src="@android:drawable/ic_menu_add"
+        android:background="#FF4081"
+        android:contentDescription="悬浮图标" />
+
+    <!-- 话术菜单面板 -->
+    <LinearLayout
+        android:id="@+id/phrase_menu"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:visibility="gone">
+
+        <!-- 搜索栏 -->
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="搜索话术..."
+            android:layout_margin="8dp" />
+
+        <!-- 公司话术列表 -->
+        <ListView
+            android:id="@+id/company_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+        <!-- 小组话术列表 -->
+        <ListView
+            android:id="@+id/group_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:visibility="gone" />
+
+        <!-- 私人话术列表 -->
+        <ListView
+            android:id="@+id/personal_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

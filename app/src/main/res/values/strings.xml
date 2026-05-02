@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">快捷回复</string>
+    <string name="company_phrases">公司话术</string>
+    <string name="group_phrases">小组话术</string>
+    <string name="personal_phrases">私人话术</string>
+    <string name="create_phrase">新建话术</string>
+    <string name="search_phrases">搜索话术</string>
+</resources>
