@@ -1,118 +1,99 @@
-# 快捷回复应用 - Android版本
+# Android快捷回复应用
 
-基于"优品生物快回复"功能手册开发的Android快捷回复应用。
+基于"优品生物快回复"功能手册开发的Android快捷回复工具应用。
 
-## 功能概述
+## 🎯 功能特性
 
-### 已实现的核心功能
-1. **悬浮窗功能** - Android悬浮窗权限和UI界面
-2. **话术管理** - 公司话术/小组话术/私人话术三级分类
-3. **数据库存储** - Room数据库存储话术数据
-4. **搜索功能** - 话术关键字搜索
-5. **多彩分类** - 颜色标识分类系统
-6. **快捷键绑定** - 话术快捷键设置
+### 核心功能
+- ✅ **悬浮窗模式** - Android悬浮窗权限和UI
+- ✅ **话术管理** - 公司话术/小组话术/私人话术三级分类
+- ✅ **数据库存储** - SQLite + Room数据库持久化
+- ✅ **搜索功能** - 关键词快速搜索话术
+- ✅ **快捷回复** - 一键发送，快捷键绑定
+- ✅ **多彩分类** - 颜色标识分类系统
 
-### 技术架构
-- **语言**: Java
-- **数据库**: SQLite + Room框架
-- **UI**: Android原生UI组件
-- **悬浮窗**: Android悬浮窗权限和窗口管理器
+## 📱 如何使用
 
-## 项目结构
-
+### 下载项目
 ```
-QuickReplyApp/
-├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   ├── com/quickreply/app/
-│   │   │   │   │   ├── MainActivity.java          # 主界面
-│   │   │   │   │   ├── PhraseListActivity.java     # 话术列表界面
-│   │   │   │   │   ├── models/
-│   │   │   │   │   │   ├── Phrase.java             # 话术数据模型
-│   │   │   │   │   ├── database/
-│   │   │   │   │   │   ├── AppDatabase.java        # Room数据库
-│   │   │   │   │   ├── dao/
-│   │   │   │   │   │   ├── PhraseDao.java          # 话术DAO
-│   │   │   │   │   ├── services/
-│   │   │   │   │   │   ├── FloatingService.java    # 悬浮窗服务
-│   │   │   │   │   ├── utils/
-│   │   │   │   │   │   ├── FloatingWindowManager.java # 悬浮窗管理器
-│   │   │   │   │   ├── adapters/
-│   │   │   │   │   │   ├── PhraseAdapter.java      # 话术列表适配器
-│   │   ├── res/
-│   │   │   ├── layout/
-│   │   │   │   ├── activity_main.xml           # 主界面布局
-│   │   │   │   ├── activity_phrase_list.xml    # 话术列表布局
-│   │   │   │   ├── floating_view.xml           # 悬浮窗布局
-│   │   │   │   ├── phrase_item.xml             # 话术项布局
-│   │   │   ├── values/
-│   │   │   │   ├── strings.xml                  # 字符串资源
-│   │   │   │   ├── colors.xml                  # 颜色资源
-│   │   │   │   ├── themes.xml                  # 主题资源
-│   │   │   ├── xml/
-│   │   │   │   ├── backup_rules.xml            # 备份规则
-│   │   │   │   ├── data_extraction_rules.xml    # 数据提取规则
-│   ├── AndroidManifest.xml                     # 应用清单
-├── build.gradle                                # Gradle配置
-├── gradle.properties                           # Gradle属性
-├── local.properties                            # 本地配置
-├── settings.gradle                            # Gradle设置
-├── gradlew                                    # Gradle包装器
-├── project_plan.md                            # 项目计划
-├── README.md                                  # 说明文档
+git clone https://github.com/jiankujidu/QuickReplyAndroid.git
 ```
 
-## 编译和运行
+### 编译APK
+**使用Android Studio**
+1. 打开Android Studio
+2. 导入QuickReplyAndroid项目
+3. Android Studio会自动下载依赖
+4. 点击 **Build → Build APK**
 
-### 环境需求
-- Android SDK
-- Java JDK 17+
-- Gradle
-
-### 编译步骤
+**命令行编译**
 ```bash
-# 进入项目目录
-cd QuickReplyApp
-
-# 构建项目
-./gradlew build
-
-# 打包APK
+cd QuickReplyAndroid
 ./gradlew assembleDebug
-
-# 清理构建
-./gradlew clean
 ```
 
-### 安装到Android设备
+APK文件位置：`app/build/outputs/apk/debug/app-debug.apk`
+
+### 安装到手机
 ```bash
-# 安装调试版APK
+# 连接Android手机
 adb install app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## 使用方法
+## 📊 项目结构
 
-1. **安装应用** - 安装APK到Android设备
-2. **启动悬浮窗** - 点击主界面的"启动悬浮窗"按钮
-3. **管理话术** - 在主界面中添加和管理话术
-4. **使用悬浮窗** - 点击悬浮图标查看话术列表，点击话术复制到其他应用
+```
+QuickReplyAndroid/
+├── app/
+│   ├── src/main/java/com/quickreply/app/
+│   │   ├── MainActivity.java          # 主界面
+│   │   ├── PhraseListActivity.java    # 话术列表界面
+│   │   ├── FloatingWindowManager.java # 悬浮窗管理器
+│   │   ├── AppDatabase.java           # Room数据库配置
+│   │   ├── Phrase.java                # 话术数据模型
+│   ├── src/main/res/
+│   │   ├── layout/                    # 布局文件
+│   │   ├── values/                    # 资源文件
+├── build.gradle                       # Gradle配置
+├── README.md                         # 说明文档
+```
 
-## 未来扩展功能
+## 🔧 技术架构
+- **开发语言**: Java
+- **数据库**: Room框架
+- **UI**: Android原生UI组件
+- **悬浮窗**: Android系统悬浮窗API
 
-1. **云同步** - 添加API服务器同步功能
-2. **快捷键** - 全局快捷键绑定
-3. **多媒体支持** - 图片、表情符号、文件支持
-4. **权限系统** - 管理员/小组长/普通用户权限管理
-5. **智能搜索** - 更强大的搜索算法
+## ⚙️ 编译说明
 
-## 开发环境
+由于gradle依赖下载可能较慢，建议使用Android Studio编译。如果你使用命令行编译：
 
-- Android Studio 或 命令行开发
-- 需要Android SDK Platform Tools
-- 需要Android Build Tools
+```bash
+# 需要先下载gradle
+./gradlew assembleDebug
+```
 
-## 备注
+## 📦 下载链接
+**项目地址**: https://github.com/jiankujidu/QuickReplyAndroid
 
-这个项目是基于"优品生物快回复"功能手册开发的Android版本，实现了基本的核心功能。可以根据手册进一步扩展功能。
+**直接下载zip**: [下载zip文件](https://github.com/jiankujidu/QuickReplyAndroid/archive/refs/heads/main.zip)
+
+## 🚀 快速开始
+
+1. **克隆项目**: `git clone https://github.com/jiankujidu/QuickReplyAndroid.git`
+2. **导入到Android Studio**
+3. **编译APK**
+4. **安装到Android手机**
+
+## 🆘 遇到问题
+
+### gradle构建失败
+如果gradle构建失败，可以：
+1. 使用Android Studio自动下载依赖
+2. 修改gradle-wrapper.properties中的gradle版本
+
+### 依赖下载慢
+Android SDK依赖下载可能需要10-20分钟，请耐心等待。
+
+## 📞 支持
+如果有任何问题，请查看项目文件或联系开发者。
