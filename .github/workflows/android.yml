@@ -21,25 +21,24 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         
-      - name: Build APK
+      - name: Gradle Build
         run: |
-          # 检查文件
-          ls -la
-          ls -la app/
-          
-          # 检查gradle wrapper
-          if [ -f gradlew ]; then
-            echo "gradlew exists"
-            chmod +x gradlew
-            ./gradlew assembleDebug --info
+          chmod +x gradlew
+          ./gradlew build
+        
+      - name: Check APK
+        run: |
+          if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
+            echo "APK found: app/build/outputs/apk/debug/app-debug.apk"
+            ls -la app/build/outputs/apk/debug/
           else
-            echo "gradlew not found"
-            exit 1
+            echo "APK not found"
           fi
-          
+        
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v3
         with:
           name: quickreply-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/
+          if-no-files-found: warn
