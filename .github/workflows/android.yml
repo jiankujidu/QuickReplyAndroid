@@ -23,11 +23,19 @@ jobs:
         
       - name: Build APK
         run: |
-          cd app
-          chmod +x ../gradlew
-          ../gradlew assembleDebug
+          ls -la
+          ls -la app/
+          ls -la gradle/
+          if [ -f gradlew ]; then
+            chmod +x gradlew
+            ./gradlew assembleDebug
+          else
+            echo "gradlew not found"
+            exit 1
+          fi
           
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v3
         with:
           name: quickreply-apk
