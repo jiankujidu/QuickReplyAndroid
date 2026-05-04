@@ -24,15 +24,15 @@ jobs:
       - name: Gradle Build
         run: |
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew assembleDebug --stacktrace
         
       - name: Check APK
         run: |
           if [ -f app/build/outputs/apk/debug/app-debug.apk ]; then
-            echo "APK found: app/build/outputs/apk/debug/app-debug.apk"
+            echo "APK found"
             ls -la app/build/outputs/apk/debug/
           else
-            echo "APK not found"
+            echo "APK not found, check error logs"
           fi
         
       - name: Upload APK
