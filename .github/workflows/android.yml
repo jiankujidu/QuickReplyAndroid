@@ -23,5 +23,23 @@ jobs:
         
       - name: Build APK
         run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
+          # 检查文件
+          ls -la
+          ls -la app/
+          
+          # 检查gradle wrapper
+          if [ -f gradlew ]; then
+            echo "gradlew exists"
+            chmod +x gradlew
+            ./gradlew assembleDebug --info
+          else
+            echo "gradlew not found"
+            exit 1
+          fi
+          
+      - name: Upload APK
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: quickreply-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
