@@ -23,16 +23,18 @@ jobs:
         
       - name: Build APK
         run: |
+          echo "Checking project structure..."
           ls -la
           ls -la app/
+          ls -la gradle/wrapper/
           ls -la gradle/
-          if [ -f gradlew ]; then
-            chmod +x gradlew
-            ./gradlew assembleDebug
-          else
-            echo "gradlew not found"
-            exit 1
-          fi
+          
+          # Set Android SDK path
+          export ANDROID_HOME=$HOME/Android/Sdk
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          
+          # Build APK
+          ./gradlew assembleDebug --stacktrace --info
           
       - name: Upload APK
         if: success()
